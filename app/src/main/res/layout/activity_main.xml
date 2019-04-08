@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
         android:fontFamily="sans-serif"
-        android:text="0"
+        android:text="@string/count_text"
         android:textAlignment="center"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="72sp"
@@ -63,6 +63,7 @@
         android:layout_marginBottom="8dp"
         android:background="@color/buttonBackground"
         android:text="@string/random_button"
+        android:onClick="randomMe"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
