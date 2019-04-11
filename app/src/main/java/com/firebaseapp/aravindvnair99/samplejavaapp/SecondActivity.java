@@ -4,7 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import java.util.Locale;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class SecondActivity extends AppCompatActivity {
 
@@ -18,15 +20,15 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     public void showRandomNumber() {
-        TextView randomView = (TextView) findViewById(R.id.textview_random);
-        TextView headingView = (TextView) findViewById(R.id.textview_label);
+        TextView randomView = findViewById(R.id.textview_random);
+        TextView headingView = findViewById(R.id.textview_label);
         int count = getIntent().getIntExtra(TOTAL_COUNT, 0);
         Random random = new Random();
-        int randomInt = 0;
+        AtomicInteger randomInt = new AtomicInteger();
         if (count > 0) {
-            randomInt = random.nextInt(count);
+            randomInt.set(random.nextInt(count));
         }
-        randomView.setText(Integer.toString(randomInt));
+        randomView.setText(String.format(Locale.getDefault(), "%d", randomInt.get()));
         headingView.setText(getString(R.string.random_heading, count));
     }
 }

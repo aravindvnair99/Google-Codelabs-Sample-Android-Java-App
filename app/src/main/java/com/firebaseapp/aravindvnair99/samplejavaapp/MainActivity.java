@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String TOTAL_COUNT = "total_count";
@@ -23,16 +25,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void countMe(View view) {
-        TextView showCountTextView = (TextView) findViewById(R.id.textView);
+        TextView showCountTextView = findViewById(R.id.textView);
         String countString = showCountTextView.getText().toString();
-        Integer count = Integer.parseInt(countString);
+        int count = Integer.parseInt(countString);
         count++;
-        showCountTextView.setText(count.toString());
+        showCountTextView.setText(String.format(Locale.getDefault(), "%d", count));
+
     }
 
     public void randomMe(View view) {
         Intent randomIntent = new Intent(this, SecondActivity.class);
-        TextView showCountTextView = (TextView) findViewById(R.id.textView);
+        TextView showCountTextView = findViewById(R.id.textView);
         String countString = showCountTextView.getText().toString();
         int count = Integer.parseInt(countString);
         randomIntent.putExtra(TOTAL_COUNT, count);
